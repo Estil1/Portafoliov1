@@ -1,13 +1,8 @@
-<<<<<<< HEAD
 import React, { createContext, useState, useContext, useEffect } from 'react';
-=======
-import React, { createContext, useState, useContext } from 'react';
->>>>>>> 8d1bba4d9874dd67d94c0ee654345381ae9584e7
 
 const LanguageContext = createContext();
 
 export const LanguageProvider = ({ children }) => {
-<<<<<<< HEAD
   // Initialize with 'en' but will update from window.__LANGUAGE__ when available
   const [language, setLanguage] = useState('en');
 
@@ -38,12 +33,6 @@ export const LanguageProvider = ({ children }) => {
       const newUrl = `${window.location.pathname}?${params.toString()}`;
       window.history.replaceState({}, '', newUrl);
     }
-=======
-  const [language, setLanguage] = useState('en');
-
-  const toggleLanguage = () => {
-    setLanguage(prev => prev === 'en' ? 'es' : 'en');
->>>>>>> 8d1bba4d9874dd67d94c0ee654345381ae9584e7
   };
 
   return (
@@ -53,7 +42,6 @@ export const LanguageProvider = ({ children }) => {
   );
 };
 
-<<<<<<< HEAD
 export const useLanguage = () => {
   const context = useContext(LanguageContext);
   if (context === undefined) {
@@ -61,6 +49,3 @@ export const useLanguage = () => {
   }
   return context;
 };
-=======
-export const useLanguage = () => useContext(LanguageContext);
->>>>>>> 8d1bba4d9874dd67d94c0ee654345381ae9584e7

@@ -3,7 +3,6 @@
  *
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
-<<<<<<< HEAD
 
 import React from 'react';
 import { LanguageProvider } from './src/context/LanguageContext';
@@ -26,5 +25,3 @@ export const onRouteUpdate = ({ location, prevLocation }) => {
     }
   }
 };
-=======
->>>>>>> 8d1bba4d9874dd67d94c0ee654345381ae9584e7
