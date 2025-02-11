@@ -33,7 +33,10 @@
   "dependencies": {
     "animejs": "^3.1.0",
     "babel-plugin-styled-components": "^1.12.0",
+<<<<<<< HEAD
     "chart.js": "^4.4.1",
+=======
+>>>>>>> 8d1bba4d9874dd67d94c0ee654345381ae9584e7
     "gatsby": "^3.4.1",
     "gatsby-plugin-google-analytics": "^3.4.0",
     "gatsby-plugin-image": "^1.4.0",

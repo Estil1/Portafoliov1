@@ -1,12 +1,20 @@
 import React, { useEffect, useRef } from 'react';
+<<<<<<< HEAD
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
+=======
+import { useStaticQuery, graphql } from 'gatsby';
+>>>>>>> 8d1bba4d9874dd67d94c0ee654345381ae9584e7
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 import sr from '@utils/sr';
 import { srConfig } from '@config';
 import { useLanguage } from '../../context/LanguageContext';
+<<<<<<< HEAD
 import { translations } from '@utils/translations';
+=======
+import { translations } from '../../translations';
+>>>>>>> 8d1bba4d9874dd67d94c0ee654345381ae9584e7
 import { Icon } from '@components/icons';
 import { usePrefersReducedMotion } from '@hooks';
 
@@ -130,11 +138,33 @@ const StyledProject = styled.li`
     color: var(--lightest-slate);
     font-size: clamp(24px, 5vw, 28px);
 
+<<<<<<< HEAD
     a {
       @media (hover: hover) {
         &:hover,
         &:focus {
           color: var(--green);
+=======
+    @media (min-width: 768px) {
+      margin: 0 0 20px;
+    }
+
+    @media (max-width: 768px) {
+      color: var(--white);
+
+      a {
+        position: static;
+
+        &:before {
+          content: '';
+          display: block;
+          position: absolute;
+          z-index: 0;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+>>>>>>> 8d1bba4d9874dd67d94c0ee654345381ae9584e7
         }
       }
     }
@@ -200,14 +230,24 @@ const StyledProject = styled.li`
   .project-links {
     display: flex;
     align-items: center;
+<<<<<<< HEAD
     flex-wrap: wrap;
     position: relative;
     margin-top: 20px;
     gap: 15px;
+=======
+    position: relative;
+    margin-top: 10px;
+    margin-left: -10px;
+>>>>>>> 8d1bba4d9874dd67d94c0ee654345381ae9584e7
     color: var(--lightest-slate);
 
     a {
       ${({ theme }) => theme.mixins.flexCenter};
+<<<<<<< HEAD
+=======
+      padding: 10px;
+>>>>>>> 8d1bba4d9874dd67d94c0ee654345381ae9584e7
 
       &.external {
         svg {
@@ -217,6 +257,7 @@ const StyledProject = styled.li`
         }
       }
 
+<<<<<<< HEAD
       &.button {
         ${({ theme }) => theme.mixins.smallButton};
         padding: 12px 16px;
@@ -238,11 +279,21 @@ const StyledProject = styled.li`
         }
       }
 
+=======
+>>>>>>> 8d1bba4d9874dd67d94c0ee654345381ae9584e7
       svg {
         width: 20px;
         height: 20px;
       }
     }
+<<<<<<< HEAD
+=======
+
+    .cta {
+      ${({ theme }) => theme.mixins.smallButton};
+      margin: 10px;
+    }
+>>>>>>> 8d1bba4d9874dd67d94c0ee654345381ae9584e7
   }
 
   .project-image {
@@ -308,7 +359,41 @@ const StyledProject = styled.li`
   }
 `;
 
+<<<<<<< HEAD
 const Featured = ({ data }) => {
+=======
+const Featured = () => {
+  const data = useStaticQuery(graphql`
+    {
+      featured: allMarkdownRemark(
+        filter: { 
+          fileAbsolutePath: { regex: "/content/featured/(en|es)/" }
+        }
+        sort: { fields: [frontmatter___date], order: ASC }
+      ) {
+        edges {
+          node {
+            frontmatter {
+              title
+              cover {
+                childImageSharp {
+                  gatsbyImageData(width: 700, placeholder: BLURRED)
+                }
+              }
+              tech
+              github
+              external
+              cta
+              lang
+            }
+            html
+          }
+        }
+      }
+    }
+  `);
+
+>>>>>>> 8d1bba4d9874dd67d94c0ee654345381ae9584e7
   const { language } = useLanguage();
   const content = translations[language].featured;
   const featuredProjects = data.featured.edges.filter(({ node }) => 
@@ -337,10 +422,15 @@ const Featured = ({ data }) => {
         {featuredProjects &&
           featuredProjects.map(({ node }, i) => {
             const { frontmatter, html } = node;
+<<<<<<< HEAD
             const { external, title, tech, github, cover, cta, slug } = frontmatter;
             const image = getImage(cover);
             const isMusicTrack = !!slug && slug.startsWith('/performance/');
             const linkPath = isMusicTrack ? `${slug}${slug.includes('?') ? '&' : '?'}lang=${language}` : null;
+=======
+            const { external, title, tech, github, cover, cta } = frontmatter;
+            const image = getImage(cover);
+>>>>>>> 8d1bba4d9874dd67d94c0ee654345381ae9584e7
 
             return (
               <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>
@@ -349,11 +439,15 @@ const Featured = ({ data }) => {
                     <p className="project-overline">{content.subtitle}</p>
 
                     <h3 className="project-title">
+<<<<<<< HEAD
                       {isMusicTrack && linkPath ? (
                         <Link to={linkPath}>{title}</Link>
                       ) : (
                         <a href={external || '#'}>{title}</a>
                       )}
+=======
+                      <a href={external}>{title}</a>
+>>>>>>> 8d1bba4d9874dd67d94c0ee654345381ae9584e7
                     </h3>
 
                     <div
@@ -362,6 +456,7 @@ const Featured = ({ data }) => {
                     />
 
                     {tech && tech.length > 0 && (
+<<<<<<< HEAD
                       <ul className="project-tech-list">
                         {tech.map((techItem, i) => (
                           <li key={i}>{techItem}</li>
@@ -385,6 +480,20 @@ const Featured = ({ data }) => {
                       {!isMusicTrack && cta && (
                         <a href={cta} aria-label="Course Link" className="button">
                           {language === 'en' ? 'Learn More' : 'Ver más'}
+=======
+                    <ul className="project-tech-list">
+                   {tech.map((techItem, i) => (
+                      <li key={i}>{techItem}</li>
+                                              ))}
+                                          </ul>
+                                                   )}
+
+
+                    <div className="project-links">
+                      {cta && (
+                        <a href={cta} aria-label="Course Link" className="cta">
+                          {language === 'en' ? 'Click here' : 'Ver más'}
+>>>>>>> 8d1bba4d9874dd67d94c0ee654345381ae9584e7
                         </a>
                       )}
                       {github && (
@@ -392,7 +501,11 @@ const Featured = ({ data }) => {
                           <Icon name="GitHub" />
                         </a>
                       )}
+<<<<<<< HEAD
                       {external && !cta && !isMusicTrack && (
+=======
+                      {external && !cta && (
+>>>>>>> 8d1bba4d9874dd67d94c0ee654345381ae9584e7
                         <a href={external} aria-label="External Link" className="external">
                           <Icon name="External" />
                         </a>
@@ -402,6 +515,7 @@ const Featured = ({ data }) => {
                 </div>
 
                 <div className="project-image">
+<<<<<<< HEAD
                   {isMusicTrack && linkPath ? (
                     <Link to={linkPath}>
                       <GatsbyImage image={image} alt={title} className="img" />
@@ -411,6 +525,11 @@ const Featured = ({ data }) => {
                       <GatsbyImage image={image} alt={title} className="img" />
                     </a>
                   )}
+=======
+                  <a href={external ? external : github ? github : '#'}>
+                    <GatsbyImage image={image} alt={title} className="img" />
+                  </a>
+>>>>>>> 8d1bba4d9874dd67d94c0ee654345381ae9584e7
                 </div>
               </StyledProject>
             );
@@ -420,6 +539,7 @@ const Featured = ({ data }) => {
   );
 };
 
+<<<<<<< HEAD
 Featured.propTypes = {
   data: PropTypes.shape({
     featured: PropTypes.shape({
@@ -444,4 +564,6 @@ Featured.propTypes = {
   }).isRequired,
 };
 
+=======
+>>>>>>> 8d1bba4d9874dd67d94c0ee654345381ae9584e7
 export default Featured;

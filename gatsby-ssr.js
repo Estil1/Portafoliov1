@@ -4,6 +4,7 @@
  * See: https://www.gatsbyjs.org/docs/ssr-apis/
  */
 
+<<<<<<< HEAD
 import React from 'react';
 import { LanguageProvider } from './src/context/LanguageContext';
 
@@ -27,3 +28,6 @@ export const onRenderBody = ({ setHeadComponents }) => {
     />,
   ]);
 };
+=======
+ // You can delete this file if you're not using it
+>>>>>>> 8d1bba4d9874dd67d94c0ee654345381ae9584e7

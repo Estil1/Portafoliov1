@@ -120,25 +120,14 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     // Use frontmatter slug if available, otherwise use the field slug
     const pagePath = node.frontmatter.slug || node.fields.slug;
     
-    if (pagePath) {
-      // Create pages for both English and Spanish content
-      const languages = ['en', 'es'];
-      languages.forEach(lang => {
-        // Only create Spanish version if it exists
-        if (lang === 'es' && node.frontmatter.lang !== 'es') {
-          console.log(`Skipping Spanish version for ${pagePath} - no Spanish content found`);
-          return;
-        }
-        
-        console.log(`Creating ${lang} performance page for ${pagePath}`);
-        createPage({
-          path: `${pagePath}${lang === 'es' ? '?lang=es' : ''}`,
-          component: performanceTemplate,
-          context: {
-            slug: pagePath,
-            language: lang
-          },
-        });
+    // Only create pages for English content
+    if (pagePath && (!node.frontmatter.lang || node.frontmatter.lang === 'en')) {
+      createPage({
+        path: pagePath,
+        component: performanceTemplate,
+        context: {
+          slug: pagePath
+        },
       });
     }
   });
@@ -196,3 +185,4 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
     },
   });
 };
+
