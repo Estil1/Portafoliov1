@@ -3,7 +3,6 @@ date: '2'
 title: 'Pila de Nota ft Jeycitolm'
 cover: './course-card.png'
 external: 'https://www.youtube.com/watch?v=1W7Geh3VPFo'
-cta: 'https://www.youtube.com/watch?v=1W7Geh3VPFo'
 tech:
   - '5M+ Plays on YouTube'          
   - '1M+ Stream on Spotify'

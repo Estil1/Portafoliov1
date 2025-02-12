@@ -126,7 +126,8 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         path: pagePath,
         component: performanceTemplate,
         context: {
-          slug: pagePath
+          slug: pagePath,
+          language: node.frontmatter.lang || 'en'
         },
       });
     }
